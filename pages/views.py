@@ -4,6 +4,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Page
 
+def home(request):
+    return render(request, 'pages/home.html')
+
+
 # Listado de páginas
 class PageListView(ListView):
     model = Page
