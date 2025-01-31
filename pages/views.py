@@ -9,7 +9,7 @@ class PageListView(ListView):
     model = Page
     template_name = 'pages/page_list.html'
     context_object_name = 'pages'
-    ordering = ['-created_at']  # Opcional, para mostrar las más recientes primero
+    ordering = ['-created_at']  
 
 # Detalle de página
 class PageDetailView(DetailView):
@@ -40,7 +40,7 @@ class PageDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'pages/page_confirm_delete.html'
     success_url = reverse_lazy('page-list')
 
-# pages/views.py
+
 from django.shortcuts import render
 
 def about_view(request):
