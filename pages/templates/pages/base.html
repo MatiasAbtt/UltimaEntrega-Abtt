@@ -2,26 +2,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Mi primer blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Proyecto{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-  <!-- Barra de navegación -->
-  <nav>
-    <a href="{% url 'page-list' %}">Inicio</a> |
-    <a href="{% url 'about' %}">Acerca de mí</a> |
-    <a href="{% url 'profile' %}">Perfil</a> |
-    <a href="{% url 'inbox' %}">Bandeja de Entrada</a> |
-    <a href="{% url 'send-message' %}">Enviar Mensaje</a>
-  </nav>
-
-  <hr>
-
-  
-  <div>
-    {% block content %}
-    {% endblock %}
-  </div>
-
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'blog:list' %}">Blog</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'messenger:inbox' %}">Mensajería</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                {% else %}
+                    <li><a href="{% url 'register' %}">Registro</a></li>
+                    <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                {% endif %}
+                <li><a href="{% url 'about' %}">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Contenido de las páginas -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 Mi Proyecto</p>
+    </footer>
 </body>
 </html>
