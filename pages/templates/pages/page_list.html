@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Listado de páginas</h1>
+
+{% if pages %}
+  <ul>
+    {% for page in pages %}
+      <li>
+        <h2>{{ page.title }}</h2>
+        <p>{{ page.subtitle }}</p>
+        <a href="{% url 'page-detail' page.pk %}">Leer más</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No hay páginas aún</p>
+{% endif %}
+
+<a href="{% url 'page-create' %}">Crear nueva página</a>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi primer blog</title>
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <nav>
+    <a href="{% url 'page-list' %}">Inicio</a> |
+    <a href="{% url 'about' %}">Acerca de mí</a> |
+    <a href="{% url 'profile' %}">Perfil</a> |
+    <a href="{% url 'inbox' %}">Bandeja de Entrada</a> |
+    <a href="{% url 'send-message' %}">Enviar Mensaje</a>
+  </nav>
+
+  <hr>
+
+  
+  <div>
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</body>
+</html>

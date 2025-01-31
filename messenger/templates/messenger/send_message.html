@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Enviar Mensaje</h1>
+
+{% if error %}
+  <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+  {% csrf_token %}
+  <label for="receiver">Destinatario (username):</label>
+  <input type="text" name="receiver" required>
+  
+  <label for="content">Mensaje:</label>
+  <textarea name="content" rows="5" required></textarea>
+  
+  <button type="submit">Enviar</button>
+</form>
+{% endblock %}
